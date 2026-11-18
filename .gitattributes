@@ -1,0 +1,10 @@
+* text=auto eol=lf
+
+# OTA dosyaları bayt bayt korunmalı: SHA-256 özeti satır sonlarına duyarlıdır.
+GAMEXPLUS/* -text
+GAMEXPLUS/manifest.json.sha256 -text
+
+*.png binary
+*.ico binary
+*.exe binary
+*.dll binary

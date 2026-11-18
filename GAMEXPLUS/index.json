@@ -1,0 +1,14 @@
+{
+  "schema_version": "mtw-remote-manifest-index.v1",
+  "list_id": "gamexplus",
+  "channel": "stable",
+  "manifests": [
+    {
+      "list_id": "gamexplus",
+      "channel": "stable",
+      "version": "GAMEXPLUS 2026.11",
+      "url": "https://raw.githubusercontent.com/Poseidon12x/skyrim-gamexplus-modlist-turk-e-eviri/main/GAMEXPLUS/manifest.json",
+      "sha256": "2fdff166c36ca901fc12a58b453ac6e064b23e7f7999dbe183ddc6e9cbd33b10"
+    }
+  ]
+}
