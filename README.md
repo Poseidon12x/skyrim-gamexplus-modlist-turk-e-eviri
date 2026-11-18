@@ -24,20 +24,22 @@
 - **GAMEXPLUS kimliği** — pencere başlığı, açılış bandı, simge, renk vurguları ve kurulum bildirimi tamamen GAMEXPLUS markasına göre ayarlandı.
 - **Siberpunk görünüm** — neon ızgara desenli banner, camgöbeği (`#00E5FF`) parlama, koyu mor (`#1B0F3B`) vurgu rengi ve çok boyutlu GX simgesi.
 - **GAMEXPLUS'a özel manifest** — yalnızca GAMEXPLUS profilinde gerçekten etkin olan modların hedefleri alındı: **1.428 hedef**, **418 benzersiz indirme**. Profilde bulunmayan **285** Nolvus kaydı ayıklandı.
-- **Çevrimdışı çalışma** — tüm çeviri listesi paketin içinde; ilk açılış dışında internet gerekmez.
-- **OTA kanalı** — bu depodaki `GAMEXPLUS/index.json` üzerinden liste doğrulanabilir (isteğe bağlı).
+- **Çevrimdışı çalışma** — tüm çeviri listesi paketin içinde; internet yoksa yerel listeden devam edilir.
+- **OTA kanalı (etkin)** — açılışta liste bu depodaki `GAMEXPLUS/index.json` üzerinden doğrulanır, ek adım gerekmez.
 
 ## Hızlı başlangıç
 
-1. `BASLAT.bat` dosyasına çift tıklayın.
-2. Açılan **Çeviri listesi bağlantısı** ekranında **Yerel** seçeneğini seçip **Seçili kaynağı yükle** düğmesine basın.
-3. Mod Organizer 2 klasörünü seçin:
+1. `BASLAT.bat` dosyasına çift tıklayın (veya `GAMEXPLUS-Ceviri-Araci.exe`).
+2. Mod Organizer 2 klasörünü seçin:
    `E:\GAMEXPLUS\Instances\Gamexplus\MO2`
-4. Profil olarak **GAMEXPLUS** seçin ve **Profili Tara** adımını çalıştırın.
-5. Premium Nexus API anahtarınız varsa otomatik indirme akışını, yoksa NXM bağlantılarıyla manuel indirme akışını kullanın.
-6. **Çeviriyi Hazırla** ile çıktı modunu oluşturun ve MO2'de etkinleştirin.
+3. Profil olarak **GAMEXPLUS** seçin ve **Profili Tara** adımını çalıştırın.
+4. Premium Nexus API anahtarınız varsa otomatik indirme akışını, yoksa NXM bağlantılarıyla manuel indirme akışını kullanın.
+5. **Çeviriyi Hazırla** ile çıktı modunu oluşturun ve MO2'de etkinleştirin.
 
 > Çıktı modunun adı **GAMEXPLUS - Turkce Ceviri** olarak ayarlıdır.
+>
+> İnternet yoksa veya bu depoya erişilemezse araç **Çeviri listesi bağlantısı** ekranını açar:
+> **Yerel** → **Seçili kaynağı yükle** adımını yapın.
 
 ## Depo içeriği
 
@@ -57,7 +59,8 @@ THIRD_PARTY_NOTICES.md     üçüncü taraf bildirimleri
 
 ## OTA kanalı
 
-Uygulama açılışta listeyi doğrudan bu depodan çekebilir. Bunun için:
+Uygulama açılışta listeyi doğrudan bu depodan çeker (paket içindeki
+`release/remote_manifest.json` içinde `"enabled": true`):
 
 ```
 https://raw.githubusercontent.com/Poseidon12x/skyrim-gamexplus-modlist-turk-e-eviri/main/GAMEXPLUS/index.json
@@ -69,7 +72,10 @@ https://raw.githubusercontent.com/Poseidon12x/skyrim-gamexplus-modlist-turk-e-ev
 2fdff166c36ca901fc12a58b453ac6e064b23e7f7999dbe183ddc6e9cbd33b10
 ```
 
-Manifesti güncellerseniz **üç dosyayı birlikte** yenileyin (`manifest.json`, `manifest.json.sha256`, `index.json`). Aksi halde araç listeyi reddeder.
+Manifesti güncellerseniz **üç dosyayı birlikte** yenileyin (`manifest.json`, `manifest.json.sha256`, `index.json`). Aksi halde araç listeyi reddeder ve açılış ekranına düşer.
+
+> `GAMEXPLUS/*` dosyaları `.gitattributes` içinde `-text` olarak işaretlidir; satır sonları
+> değişirse SHA-256 bozulur. Bu ayarı kaldırmayın.
 
 ## Teknik notlar
 
@@ -77,6 +83,12 @@ Manifesti güncellerseniz **üç dosyayı birlikte** yenileyin (`manifest.json`,
 - Görsel kimlik, uygulamanın çalışma anında okuduğu `release/branding.json`, `release/gamexplus-banner.png` ve `release/gamexplus.ico` dosyalarıyla uygulanır.
 - Derlenmiş ikilide sabit metin/renk tablosuna yapılan her müdahale uygulamayı `0xC0000409` ile düşürdüğü için tema, çalışma zamanı marka dosyaları üzerinden verilir.
 - Yalnızca HTTPS ve `allow_hosts` listesindeki alan adları kabul edilir; indirme sayacı/telemetri yoktur.
+
+## Paket nerede?
+
+Bu depo yalnızca **OTA verisini, marka görsellerini ve dokümantasyonu** barındırır.
+Çalıştırılabilir paket (~82 MB) ayrı bir ZIP olarak dağıtılır; ZIP'i GitHub
+**Releases** bölümüne ekleyip buradan bağlantı verebilirsiniz.
 
 ## Lisans
 
